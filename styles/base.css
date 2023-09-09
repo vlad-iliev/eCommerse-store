@@ -1,7 +1,7 @@
 :root {
     --main-font: 'Satisfy', cursive;
 
-    --main-pink: #f8e8f1;
+    --main-pink: #fff4fa;
 
     --dark-yellow: #ffe6ae;
     --main-yellow: #ffecc4;
@@ -149,10 +149,12 @@ body {
 }
 /* <-------LINKS-------> */
 
-.footer .footer-links{
+.footer .info-list{
     display: flex;
+    flex-direction: column;
     align-items: center;
 }
+
 
 
 /* <-------LOGO-------> */
@@ -180,11 +182,12 @@ body {
 
 
 
-.footer .social-media-links{
+.footer .footer-links{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 2rem;
 }
 
 .footer .footer-heading{
@@ -193,11 +196,22 @@ body {
     font-size: 2rem;
     font-weight: 300;
 }
-.footer .social-links{
-    display: flex;
-    flex-direction: row;
-    
+.footer .icons-wrapper{
+    margin: auto;
 }
+
+.footer .social-icons-list{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row; 
+}
+
+.footer .social-icons-list a{
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+}
+
+
 /* <-------WATERMARK-------> */
 .footer .reserved{
     margin-top: 2rem;
@@ -212,11 +226,17 @@ body {
 
 
 .fa-instagram:hover{
-    color:  #ee2a7b;
+    background: -webkit-linear-gradient(0.35turn, #f9ce34 0%, #ee2a7b 50%, #6228d7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.fa-etsy:hover{
-    color: #f1641e;
+.fa-youtube:hover{
+   color: #ff0404;
+}
+
+.fa-tiktok:hover{
+    color: #fff ;
 }
 
 .fa-facebook-f:hover{
@@ -226,5 +246,4 @@ body {
 
 .nav-item:hover {
     font-weight: bold;
-
 }

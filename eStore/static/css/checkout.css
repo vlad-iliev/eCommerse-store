@@ -1,0 +1,112 @@
+.checkout .btn{
+    border: none;
+    background-color: unset;
+    color: var(--dark-pink);
+    cursor: pointer;
+}
+.checkout a{
+    text-decoration: none;
+    color: var(--dark-pink);
+    font-family: var(--main-font);
+}
+
+.checkout .input-field{
+    min-width: 250px;
+    height: 36px;
+    padding: 12px;
+    border: none;
+    margin: 0 12px;
+}
+.checkout .form-field{
+    margin: 12px;
+
+}
+.checkout .checkout-heading{
+    font-family: var(--main-font);
+    color: var(--dark-pink);
+    font-size: 24px;
+    background-color: var(--main-pink);
+    margin: 36px 10vw;
+    border-radius: 36px;
+    text-align: center;
+}
+
+.checkout .head-back{
+    margin: 0 10vw;
+}
+
+
+.checkout .checkout-form-container{
+    font-family: var(--main-font);
+    margin: 36px 10vw 10vh 10vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkout .main-container{
+    background-color: var(--main-pink);
+    border-radius: 36px;
+    padding: 36px;
+    width: 39vw;
+}
+
+.checkout .customer-details-form{
+    text-align: center;
+}
+.checkout .customer-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.checkout .inline-block-input{
+    display: inline-block;
+}
+.checkout .full-len-input input{
+    width: 85%;
+    margin: auto;
+}
+
+.checkout .shipping-info{
+    margin-bottom: 36px;
+}
+
+.checkout .checkout-submit-btn{
+    width: 250px;
+    height: 36px;
+    background-color: var(--dark-pink);
+    color: var(--main-pink);
+    border-radius: 36px;
+}
+.checkout .checkout-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--dark-pink);
+    padding: 16px;
+}
+
+
+.checkout .checkout-product-image{
+    height: 100px;
+    width: 100px;
+}
+.checkout .checkout-product-image img{
+    object-fit: cover;
+    height: 100%;
+}
+
+
+.checkout .summary-heading{
+    text-align: center;
+}
+
+.checkout
+.summary-subtotal,
+.summary-shipping,
+.summary-total{
+    display: flex;
+    justify-content: space-between;
+    margin: 16px 0;
+}
+

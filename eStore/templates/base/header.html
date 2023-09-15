@@ -1,0 +1,29 @@
+{% load static %}
+
+<header class="header">
+    <nav class="nav-bar">
+        <div class="logo-wrapper">
+            <div>
+                <img class="logo-img" src="{% static 'images/MyClayWorldLogo.png' %}" alt="logo">
+            </div>
+            <a href="#" class="logo-link">My Clay World</a>
+        </div>
+        <div class="form-wrapper">
+            <form id="search-form" class="search-form">
+                <input type="search" id="query" class="form-input" name="q" placeholder="Search...">
+                <button class="form-btn"><i class="fas fa-search"></i></button>
+            </form>
+            <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
+        </div>
+    </nav>
+    <nav class="nav">
+        <ul class="nav-links" role="list">
+            <li><a href="" class="nav-item">Earrings</a></li>
+            <li><a href="" class="nav-item">Charms</a></li>
+            <li><a href="" class="nav-item">Keyrings</a></li>
+            <li><a href="" class="nav-item">Figurines</a></li>
+            <li><a href="" class="nav-item">Custom</a></li>
+            <li><a href="" class="nav-item">All</a></li>
+        </ul>
+    </nav>
+</header>

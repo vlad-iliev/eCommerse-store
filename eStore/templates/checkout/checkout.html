@@ -1,0 +1,100 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block page_content %}
+
+    <section class="checkout">
+        <div class="checkout-heading">
+            <h2>Checkout</h2>
+        </div>
+        <div>
+            <a href="#" class="head-back"><i class="fa-solid fa-arrow-left-long"></i> Return to Cart</a>
+        </div>
+        <div class="checkout-form-container">
+            <form class="customer-details-form main-container">
+                <div class="customer-info">
+                    <h3>Contact Information:</h3>
+                    <div class="form-field">
+                        <input required class="input-field" type="text" name="FirstName" placeholder="First Name">
+                        <input required class="input-field" type="text" name="Surname" placeholder="Surname">
+                    </div>
+                    <div class="form-field full-len-input">
+                        <input required class="input-field" type="email" name="email" placeholder="Email">
+                    </div>
+                </div>
+
+                <div class="shipping-info">
+                    <h3>Shipping Information:</h3>
+                    <div class="form-field full-len-input">
+                        <input class="input-field" type="text" name="address" placeholder="Address">
+                    </div>
+                    <div class="form-field inline-block-input">
+                        <input class="input-field" type="text" name="country" placeholder="Country">
+                    </div>
+                    <div class="form-field inline-block-input">
+                        <input class="input-field" type="text" name="city" placeholder="City">
+                    </div>
+                    <div class="form-field inline-block-input">
+                        <input class="input-field" type="text" name="state" placeholder="State / Province / Region">
+                    </div>
+                    <div class="form-field inline-block-input">
+                        <input class="input-field" type="text" name="zipcode" placeholder="Postcode / Zip code">
+                    </div>
+
+                </div>
+                <button type="submit" class="btn checkout-submit-btn">Continue</button>
+            </form>
+
+            <div class="summary-container main-container">
+                <div class="summary-heading">
+                    <h3>Order Summary</h3>
+                </div>
+                <ul role="list" class="checkout-list">
+                    <li class="checkout-item">
+                        <div class="checkout-product-image">
+                            <img src="{% static 'images/Earrings.jpg' %}" alt="Earings">
+                        </div>
+                        <div class="checkout-product-description">
+                            <h4 class="title">
+                                Cute Kawai Orange Earings
+                            </h4>
+                            <span class="variant">
+                                Colour: Orange
+                            </span>
+                        </div>
+                        <div class="checkout-product-quantity">
+                            <p class="display-quantity">x0</p></div>
+                        <div class="checkout-product-total">
+                            <span>£ 9.99</span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="form-field discount-filed">
+                    <input class="input-field" type="text" name="zipcode" placeholder="Discount code or gift card">
+                </div>
+                <div class="summary-subtotal">
+                    <p>Subtotal</p>
+                    <p>£9.99</p>
+                </div>
+                <div class="summary-shipping">
+                    <p>Shipping</p>
+                    <p>£4.99</p>
+                </div>
+                <div class="summary-total">
+                    <div class="total-text">
+                        <h3>Total</h3>
+                        <p>Including £2.00 VAT</p>
+                    </div>
+                    <div class="total-number">
+                        <h3>£14.98</h3>
+                        <p>GBP</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        </form>
+    </section>
+
+{% endblock %}

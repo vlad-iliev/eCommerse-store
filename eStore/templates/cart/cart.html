@@ -1,0 +1,73 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block page_content %}
+    <section class="cart">
+        <div class="cart-heading">
+            <h2>Shopping Cart</h2>
+        </div>
+        <div>
+            <a href="#" class="head-back"><i class="fa-solid fa-arrow-left-long"></i> CONTINUE SHOPPING</a>
+        </div>
+        <form action="#" method="get" class="shopping-cart-form">
+
+            <div class="cart-container">
+                <ul role="list" class="cart-list">
+                    <li class="cart-item cart-description">
+                        <p class="description">Product</p>
+                        <p class="price">Price</p>
+                        <p class="quantity">Quantity</p>
+                        <p class="total">Total</p>
+                    </li>
+                    <li class="cart-item cart-product">
+                        <div class="cart-product-image">
+                            <img src="{% static 'images/Earrings.jpg' %}" alt="Earings">
+                        </div>
+                        <div class="description cart-product-description">
+                            <h3 class="title">
+                                Cute Kawai Orange Earings
+                            </h3>
+                            <span class="variant">
+                                Colour: Orange
+                            </span>
+                        </div>
+                        <div class="price cart-product-price">
+                            <span>£ 9.99</span>
+                        </div>
+                        <div class="quantity cart-product-quantity">
+                            <button type="button" class="btn quantity-change-btn">
+                                <i class="fa-solid fa-circle-plus"></i>
+                            </button>
+                            <p class="display-quantity">0</p>
+                            <button type="button" class="btn quantity-change-btn">
+                                <i class="fa-solid fa-circle-minus"></i>
+                            </button>
+                            <a href="#" class="remove-product"><i class="fa-solid fa-xmark"></i> Remove</a>
+                        </div>
+                        <div class="total cart-product-total">
+                            <span>£ 9.99</span>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="cart-subtotal-container">
+                <div class="policies-container">
+                    <p>VAT included. <a href="#">Shipping</a> calculated at checkout.</p>
+                </div>
+                <div class="subtotal-container">
+                    <p class="subtotal-text">SUBTOTAL :</p>
+                    <p class="subtotal-price">£ 9.99 GBP</p>
+                </div>
+            </div>
+            <div class="to-checkout-container">
+                <button type="submit" class="btn cart-submit-btn">Continue To Checkout</button>
+            </div>
+        </form>
+    </section>
+
+
+
+
+
+{% endblock %}

@@ -66,6 +66,16 @@ body {
 }
 
 /* <-------LOGO-------> */
+/* .header .logo-wrapper {
+    height: 30px;
+}
+
+.header .logo-wrapper img{
+    position: relative;
+    height: 250px;
+    width: 100%;
+    bottom: 80px;
+     */
 .header .logo-link {
     display: inline-block;
     text-decoration: none;

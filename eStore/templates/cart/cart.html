@@ -19,35 +19,37 @@
                         <p class="quantity">Quantity</p>
                         <p class="total">Total</p>
                     </li>
-                    <li class="cart-item cart-product">
+                    {% for item in items %}
+                        <li class="cart-item cart-product">
                         <div class="cart-product-image">
-                            <img src="{% static 'images/Earrings.jpg' %}" alt="Earings">
+                            <img src=" {{item.product.image_url}} " alt="{{item.product.title }} image">
                         </div>
                         <div class="description cart-product-description">
                             <h3 class="title">
-                                Cute Kawai Orange Earings
+                                {{ item.product.title}}
                             </h3>
                             <span class="variant">
                                 Colour: Orange
                             </span>
                         </div>
                         <div class="price cart-product-price">
-                            <span>£ 9.99</span>
+                            <span>£ {{ item.product.price|floatformat:2 }}</span>
                         </div>
                         <div class="quantity cart-product-quantity">
                             <button type="button" class="btn quantity-change-btn">
                                 <i class="fa-solid fa-circle-plus"></i>
                             </button>
-                            <p class="display-quantity">0</p>
+                            <p class="display-quantity">{{ item.quantity }}</p>
                             <button type="button" class="btn quantity-change-btn">
                                 <i class="fa-solid fa-circle-minus"></i>
                             </button>
                             <a href="#" class="remove-product"><i class="fa-solid fa-xmark"></i> Remove</a>
                         </div>
                         <div class="total cart-product-total">
-                            <span>£ 9.99</span>
+                            <span>£ {{ item.get_total|floatformat:2 }}</span>
                         </div>
                     </li>
+                    {% endfor %}
 
                 </ul>
             </div>
@@ -57,7 +59,7 @@
                 </div>
                 <div class="subtotal-container">
                     <p class="subtotal-text">SUBTOTAL :</p>
-                    <p class="subtotal-price">£ 9.99 GBP</p>
+                    <p class="subtotal-price">£ {{ order.get_cart_total|floatformat:2 }} GBP</p>
                 </div>
             </div>
             <div class="to-checkout-container">

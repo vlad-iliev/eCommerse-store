@@ -50,31 +50,33 @@
                     <h3>Order Summary</h3>
                 </div>
                 <ul role="list" class="checkout-list">
-                    <li class="checkout-item">
+                    {% for item in items %}
+                        <li class="checkout-item">
                         <div class="checkout-product-image">
-                            <img src="{% static 'images/Earrings.jpg' %}" alt="Earings">
+                            <img src="{{item.product.image_url}}" alt="{{item.product.title }} image">
                         </div>
                         <div class="checkout-product-description">
                             <h4 class="title">
-                                Cute Kawai Orange Earings
+                                {{ item.product.title}}
                             </h4>
                             <span class="variant">
                                 Colour: Orange
                             </span>
                         </div>
                         <div class="checkout-product-quantity">
-                            <p class="display-quantity">x0</p></div>
+                            <p class="display-quantity">x{{ item.quantity }}</p></div>
                         <div class="checkout-product-total">
-                            <span>£ 9.99</span>
+                            <span>£ {{ item.get_total|floatformat:2 }}</span>
                         </div>
                     </li>
+                    {% endfor %}
                 </ul>
                 <div class="form-field discount-filed">
                     <input class="input-field" type="text" name="zipcode" placeholder="Discount code or gift card">
                 </div>
                 <div class="summary-subtotal">
                     <p>Subtotal</p>
-                    <p>£9.99</p>
+                    <p>£{{ order.get_cart_total|floatformat:2 }}</p>
                 </div>
                 <div class="summary-shipping">
                     <p>Shipping</p>

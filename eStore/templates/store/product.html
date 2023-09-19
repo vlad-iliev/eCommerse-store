@@ -1,0 +1,46 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block page_content %}
+    <section class="product-details">
+        <div class="details-container">
+            <div class="images-container">
+                <div class="main-image-container">
+                    <img src="{{ product.image_url }}" alt="{{ product.title }} image">
+                </div>
+                <ul role="list">
+                    <li class="other-img">
+                        <img src="{{ product.image_url }}" alt="{{ product.title }} image">
+                    </li>
+                    <li class="other-img">
+                        <img src="{{ product.image_url }}" alt="{{ product.title }} image">
+                    </li>
+                    <li class="other-img">
+                        <img src="{{ product.image_url }}" alt="{{ product.title }} image">
+                    </li>
+                    <li class="other-img">
+                        <img src="{{ product.image_url }}" alt="{{ product.title }} image">
+                    </li>
+                </ul>
+            </div>
+            <div class="info-container">
+                <h3 class="product-heading">{{ product.title }}</h3>
+                <h3 class="product-price">£ {{ product.price|floatformat:2 }}</h3>
+                <div class="option-selector">
+                    <label>Colour</label>
+                    <button class="btn option-select-btn">White</button>
+                    <ul class="options-dropdown">
+                        <li>
+                            <h4>White</h4>
+                        </li>
+                    </ul>
+                </div>
+                <div class="description-container">
+                    <p>{{ product.description }}</p>
+                </div>
+                <button class="btn add-to-cart-btn">Add To Cart</button>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

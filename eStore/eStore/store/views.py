@@ -51,3 +51,13 @@ def checkout(request):
     }
 
     return render(request, 'checkout/checkout.html', context)
+
+
+def product(request, pk):
+    product = Product.objects.get(pk=pk)
+
+    context = {
+        'product': product,
+
+    }
+    return render(request, 'store/product.html', context)

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import *
+from django.http import JsonResponse
 
 
 def index(request):
@@ -61,3 +62,7 @@ def product(request, pk):
 
     }
     return render(request, 'store/product.html', context)
+
+
+def update_item(request):
+    return JsonResponse('item was added', safe=False)

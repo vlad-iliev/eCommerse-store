@@ -3,12 +3,15 @@
 
 {% block page_content %}
     <section class="product-details">
+        <div class="head-back">
+            <a href="#" ><i class="fa-solid fa-arrow-left-long"></i> CONTINUE SHOPPING</a>
+        </div>
         <div class="details-container">
             <div class="images-container">
                 <div class="main-image-container">
                     <img src="{{ product.image_url }}" alt="{{ product.title }} image">
                 </div>
-                <ul role="list">
+                <ul role="list" class="additional-images-list">
                     <li class="other-img">
                         <img src="{{ product.image_url }}" alt="{{ product.title }} image">
                     </li>
@@ -21,24 +24,27 @@
                     <li class="other-img">
                         <img src="{{ product.image_url }}" alt="{{ product.title }} image">
                     </li>
+
                 </ul>
             </div>
             <div class="info-container">
-                <h3 class="product-heading">{{ product.title }}</h3>
-                <h3 class="product-price">£ {{ product.price|floatformat:2 }}</h3>
-                <div class="option-selector">
-                    <label>Colour</label>
-                    <button class="btn option-select-btn">White</button>
-                    <ul class="options-dropdown">
-                        <li>
-                            <h4>White</h4>
-                        </li>
-                    </ul>
-                </div>
+                <h2 class="product-heading">{{ product.title }}</h2>
+                <h2 class="product-price">£ {{ product.price|floatformat:2 }}</h2>
                 <div class="description-container">
+                    <h3>Product description:</h3>
                     <p>{{ product.description }}</p>
                 </div>
-                <button class="btn add-to-cart-btn">Add To Cart</button>
+                <div class="option-selector">
+                    <label>Colour :</label>
+                    <button class="btn option-select-btn">White <i class="fa-solid fa-angle-down"></i></button>
+{#                    <ul role="list" class="options-dropdown">#}
+{#                        <li>#}
+{#                            <h4>White</h4>#}
+{#                        </li>#}
+{#                    </ul>#}
+                </div>
+
+                <button data-product="{{ product.id }}" data-action="add" class="btn add-to-cart-btn update-cart">Add To Cart</button>
             </div>
         </div>
     </section>

@@ -97,6 +97,7 @@ class Order(models.Model):
         total = sum([item.get_total for item in order_items])
         return total
 
+
 class OrderItem(models.Model):
     product = models.ForeignKey(
         Product,

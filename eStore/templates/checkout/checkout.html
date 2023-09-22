@@ -11,39 +11,61 @@
             <a href="#" class="head-back"><i class="fa-solid fa-arrow-left-long"></i> Return to Cart</a>
         </div>
         <div class="checkout-form-container">
-            <form class="customer-details-form main-container">
-                <div class="customer-info">
-                    <h3>Contact Information:</h3>
-                    <div class="form-field">
-                        <input required class="input-field" type="text" name="FirstName" placeholder="First Name">
-                        <input required class="input-field" type="text" name="Surname" placeholder="Surname">
-                    </div>
-                    <div class="form-field full-len-input">
-                        <input required class="input-field" type="email" name="email" placeholder="Email">
-                    </div>
-                </div>
-
-                <div class="shipping-info">
-                    <h3>Shipping Information:</h3>
-                    <div class="form-field full-len-input">
-                        <input class="input-field" type="text" name="address" placeholder="Address">
-                    </div>
-                    <div class="form-field inline-block-input">
-                        <input class="input-field" type="text" name="country" placeholder="Country">
-                    </div>
-                    <div class="form-field inline-block-input">
-                        <input class="input-field" type="text" name="city" placeholder="City">
-                    </div>
-                    <div class="form-field inline-block-input">
-                        <input class="input-field" type="text" name="state" placeholder="State / Province / Region">
-                    </div>
-                    <div class="form-field inline-block-input">
-                        <input class="input-field" type="text" name="zipcode" placeholder="Postcode / Zip code">
+            <div>
+                <form class="customer-details-form main-container">
+                    {% csrf_token %}
+                    <div class="customer-info">
+                        <h3>Contact Information:</h3>
+                        <div class="form-field">
+                            <label>
+                                <input required class="input-field" type="text" name="forename"
+                                       placeholder="First Name">
+                            </label>
+                            <label>
+                                <input required class="input-field" type="text" name="surname" placeholder="Surname">
+                            </label>
+                        </div>
+                        <div class="form-field full-len-input">
+                            <label>
+                                <input required class="input-field" type="email" name="email" placeholder="Email">
+                            </label>
+                        </div>
                     </div>
 
-                </div>
-                <button type="submit" class="btn checkout-submit-btn">Continue</button>
-            </form>
+                    <div class="shipping-info">
+                        <h3>Shipping Information:</h3>
+                        <div class="form-field full-len-input">
+                            <label>
+                                <input class="input-field" type="text" name="address" placeholder="Address">
+                            </label>
+                        </div>
+                        <div class="form-field inline-block-input">
+                            <label>
+                                <input class="input-field" type="text" name="country" placeholder="Country">
+                            </label>
+                        </div>
+                        <div class="form-field inline-block-input">
+                            <label>
+                                <input class="input-field" type="text" name="city" placeholder="City">
+                            </label>
+                        </div>
+                        <div class="form-field inline-block-input">
+                            <label>
+                                <input class="input-field" type="text" name="region"
+                                       placeholder="State / Province / Region">
+                            </label>
+                        </div>
+                        <div class="form-field inline-block-input">
+                            <label>
+                                <input class="input-field" type="text" name="postcode"
+                                       placeholder="Postcode / Zip code">
+                            </label>
+                        </div>
+
+                    </div>
+                    <button type="submit" class="btn checkout-submit-btn">Continue</button>
+                </form>
+            </div>
 
             <div class="summary-container main-container">
                 <div class="summary-heading">
@@ -52,27 +74,29 @@
                 <ul role="list" class="checkout-list">
                     {% for item in items %}
                         <li class="checkout-item">
-                        <div class="checkout-product-image">
-                            <img src="{{item.product.image_url}}" alt="{{item.product.title }} image">
-                        </div>
-                        <div class="checkout-product-description">
-                            <h4 class="title">
-                                {{ item.product.title}}
-                            </h4>
-                            <span class="variant">
+                            <div class="checkout-product-image">
+                                <img src="{{ item.product.image_url }}" alt="{{ item.product.title }} image">
+                            </div>
+                            <div class="checkout-product-description">
+                                <h4 class="title">
+                                    {{ item.product.title }}
+                                </h4>
+                                <span class="variant">
                                 Colour: Orange
                             </span>
-                        </div>
-                        <div class="checkout-product-quantity">
-                            <p class="display-quantity">x{{ item.quantity }}</p></div>
-                        <div class="checkout-product-total">
-                            <span>£ {{ item.get_total|floatformat:2 }}</span>
-                        </div>
-                    </li>
+                            </div>
+                            <div class="checkout-product-quantity">
+                                <p class="display-quantity">x{{ item.quantity }}</p></div>
+                            <div class="checkout-product-total">
+                                <span>£ {{ item.get_total|floatformat:2 }}</span>
+                            </div>
+                        </li>
                     {% endfor %}
                 </ul>
                 <div class="form-field discount-filed">
-                    <input class="input-field" type="text" name="zipcode" placeholder="Discount code or gift card">
+                    <label>
+                        <input class="input-field" type="text" name="zipcode" placeholder="Discount code or gift card">
+                    </label>
                 </div>
                 <div class="summary-subtotal">
                     <p>Subtotal</p>
@@ -88,15 +112,110 @@
                         <p>Including £2.00 VAT</p>
                     </div>
                     <div class="total-number">
-                        <h3>£14.98</h3>
+                        <h3>£{{ order.get_cart_total|floatformat:2 }}</h3>
                         <p>GBP</p>
                     </div>
                 </div>
 
             </div>
+
+            <form class="payment-details-form main-container hidden">
+                <div class="payment-info">
+                    <h3>Payment Information:</h3>
+                    <div class="form-field full-len-input">
+                        <label>
+                            <input class="input-field" type="text" name="address" placeholder="Card number">
+                        </label>
+                    </div>
+                    <div class="form-field inline-block-input">
+                        <label>
+                            <input class="input-field" type="text" name="country" placeholder="Expiration date(MM /YY)">
+                        </label>
+                    </div>
+                    <div class="form-field inline-block-input">
+                        <label>
+                            <input class="input-field" type="text" name="city" placeholder="Security code">
+                        </label>
+                    </div>
+                    <div class="form-field full-len-input">
+                        <label>
+                            <input class="input-field" type="text" name="state" placeholder="Name on card">
+                        </label>
+                    </div>
+
+                </div>
+                <button type="submit" class="btn payment-submit-btn">Continue</button>
+            </form>
         </div>
 
-        </form>
     </section>
+
+    <script type="text/javascript">
+        var form = document.querySelector(".checkout .customer-details-form")
+        var total = '{{ order.get_cart_total }}'
+
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault()
+            console.log('form submitted..')
+            document.querySelector(".checkout .checkout-submit-btn").classList.add('hidden')
+            document.querySelector(".checkout .payment-details-form").classList.remove('hidden')
+        })
+
+        document.querySelector(".checkout .payment-submit-btn").addEventListener('click', function (e) {
+            submitFormData()
+        })
+
+        function submitFormData() {
+            console.log('payment button clicked..')
+
+            var userFormData = {
+                'forename': null,
+                'surname': null,
+                'email': null,
+                'total': total,
+            }
+            var shippingInfo = {
+                'address': null,
+                'country': null,
+                'city': null,
+                'region': null,
+                'postcode': null,
+            }
+            csrftoken = form.getElementsByTagName("input")[0].value
+
+
+            userFormData.forename = form.forename.value
+            userFormData.surname = form.surname.value
+            userFormData.email = form.email.value
+
+            shippingInfo.address = form.address.value
+            shippingInfo.country = form.country.value
+            shippingInfo.city = form.city.value
+            shippingInfo.region = form.region.value
+            shippingInfo.postcode = form.postcode.value
+
+            var url = '/process_order/'
+
+            fetch(url, {
+                method: 'Post',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                },
+                body: JSON.stringify({
+                    'form': userFormData,
+                    'shipping': shippingInfo,
+                })
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log('success',data);
+                    alert('Transaction completed');
+                    window.location.href = "{% url 'index' %}"
+                })
+
+        }
+    </script>
 
 {% endblock %}

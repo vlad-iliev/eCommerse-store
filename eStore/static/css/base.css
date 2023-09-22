@@ -150,7 +150,18 @@ body {
     color: var(--dark-pink);
 
 }
-
+.header .cart-items-counter{
+    font-size: 12px;
+    font-family: var(--main-font);
+    font-weight: bold;
+    padding: 0 6px;
+    border-radius: 16px;
+    color: var(--dark-pink);
+    background-color: var(--main-pink);
+    position: relative;
+    right: 14px;
+    top: 8px;
+}
 
 ::placeholder {
     font-family: var(--main-font);

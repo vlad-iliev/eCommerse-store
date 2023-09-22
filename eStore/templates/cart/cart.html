@@ -36,14 +36,30 @@
                             <span>£ {{ item.product.price|floatformat:2 }}</span>
                         </div>
                         <div class="quantity cart-product-quantity">
-                            <button type="button" class="btn quantity-change-btn">
+                            <button type="button"
+                                    class="btn quantity-change-btn update-cart"
+                                    data-product="{{ item.product.id }}"
+                                    data-action="add"
+                            >
                                 <i class="fa-solid fa-circle-plus"></i>
                             </button>
                             <p class="display-quantity">{{ item.quantity }}</p>
-                            <button type="button" class="btn quantity-change-btn">
+                            <button
+                                    type="button"
+                                    class="btn quantity-change-btn update-cart"
+                                    data-product="{{ item.product.id }}"
+                                    data-action="remove"
+                            >
                                 <i class="fa-solid fa-circle-minus"></i>
                             </button>
-                            <a href="#" class="remove-product"><i class="fa-solid fa-xmark"></i> Remove</a>
+                            <button
+                                    type="button"
+                                    class="btn remove-product update-cart"
+                                    data-product="{{ item.product.id }}"
+                                    data-action="set-to-zero"
+                            >
+                                <i class="fa-solid fa-xmark"></i> Remove
+                            </button>
                         </div>
                         <div class="total cart-product-total">
                             <span>£ {{ item.get_total|floatformat:2 }}</span>

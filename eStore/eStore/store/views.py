@@ -1,29 +1,25 @@
 from django.shortcuts import render
 from .models import *
+from .utils import *
 from django.http import JsonResponse
 import json
 import datetime
 
 
 def index(request):
-    context = {
+    data = cart_data(request)
+    cart_items = data['cart_items']
 
+    context = {
+        'cart_items': cart_items,
     }
 
     return render(request, 'common/index.html', context)
 
 
 def store(request):
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer, complete=False)
-        items = order.orderitem_set.all()
-        cart_items = order.get_cart_items
-
-    else:
-        items = []
-        order = {'get_cart_total': 0, }
-        cart_items = order['get_cart_items']
+    data = cart_data(request)
+    cart_items = data['cart_items']
 
     products = Product.objects.all()
     context = {
@@ -35,15 +31,10 @@ def store(request):
 
 
 def cart(request):
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer, complete=False)
-        items = order.orderitem_set.all()
-        cart_items = order.get_cart_items
-    else:
-        items = []
-        order = {'get_cart_total': 0, }
-        cart_items = order['get_cart_items']
+    data = cart_data(request)
+    cart_items = data['cart_items']
+    order = data['order']
+    items = data['items']
 
     context = {
         'items': items,
@@ -55,15 +46,10 @@ def cart(request):
 
 
 def checkout(request):
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer, complete=False)
-        items = order.orderitem_set.all()
-        cart_items = order.get_cart_items
-    else:
-        items = []
-        order = {'get_cart_total': 0, }
-        cart_items = order['get_cart_items']
+    data = cart_data(request)
+    cart_items = data['cart_items']
+    order = data['order']
+    items = data['items']
 
     context = {
         'items': items,
@@ -76,9 +62,12 @@ def checkout(request):
 
 def product(request, pk):
     product = Product.objects.get(pk=pk)
+    data = cart_data(request)
+    cart_items = data['cart_items']
 
     context = {
         'product': product,
+        'cart_items': cart_items,
 
     }
     return render(request, 'store/product.html', context)
@@ -117,10 +106,16 @@ def update_item(request):
 
 
 def process_order(request):
-    customer = request.user.customer
     data = json.loads(request.body)
     transaction_id = datetime.datetime.now().timestamp()
-    order, created = Order.objects.get_or_create(customer=customer, complete=False)
+
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+
+    else:
+        customer, order = guest_order(request, data)
+
     total = float(data['form']['total'])
     order.transaction_id = transaction_id
 

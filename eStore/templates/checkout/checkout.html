@@ -19,7 +19,7 @@
                         <div class="form-field">
                             <label>
                                 <input required class="input-field" type="text" name="forename"
-                                       placeholder="First Name">
+                                       placeholder="Forename">
                             </label>
                             <label>
                                 <input required class="input-field" type="text" name="surname" placeholder="Surname">
@@ -212,6 +212,9 @@
                 .then((data) => {
                     console.log('success',data);
                     alert('Transaction completed');
+                    cart = {}
+                    document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+
                     window.location.href = "{% url 'index' %}"
                 })
 

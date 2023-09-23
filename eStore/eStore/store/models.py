@@ -12,7 +12,7 @@ class Customer(models.Model):
         null=True,
         blank=True
     )
-    first_name = models.CharField(
+    forename = models.CharField(
         max_length=200,
         null=True,
         blank=True
@@ -30,7 +30,7 @@ class Customer(models.Model):
     )
 
     def __str__(self):
-        return self.first_name + self.surname
+        return f'{self.forename} {self.surname}'
 
 
 class Product(models.Model):
@@ -46,7 +46,11 @@ class Product(models.Model):
         blank=True,
     )
 
-    price = models.FloatField(
+    price = models.DecimalField(
+        max_digits=7,
+        decimal_places=2,
+        null=True,
+        blank=True,
     )
 
     image = models.ImageField(
